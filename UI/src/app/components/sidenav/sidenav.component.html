@@ -1,0 +1,70 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="min-height:70vh;min-height: 100%;background-color: black;">
+    
+    <ul class="laptopView nav nav-pills flex-column mb-auto flex-grow-5" style="padding-top:20vh;">
+      <li class="nav-item">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link text-white" aria-current="page">
+          <fa-icon [icon]="Home"></fa-icon>
+          Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/projects" routerLinkActive="active" class="nav-link text-white">
+          <fa-icon [icon]="Project"></fa-icon>
+          Projects
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/users" routerLinkActive="active" class="nav-link text-white">
+          <fa-icon [icon]="Users"></fa-icon>
+          Users
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/tools" routerLinkActive="active" class="nav-link text-white">
+          <fa-icon [icon]="Tools"></fa-icon>
+          Tools
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/privileges" routerLinkActive="active" class="nav-link text-white">
+          <fa-icon [icon]="Privileges"></fa-icon>
+          Privileges
+        </a>
+      </li>
+    </ul>
+    
+  <ul class="tabletView nav nav-pills nav-flush flex-column mb-auto text-center" style="padding-top: 20vh;">
+    <li class="nav-item">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link text-white" title="Home" aria-current="page">
+        <fa-icon [icon]="Home"></fa-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/admin/projects" routerLinkActive="active" class="nav-link text-white"  title="Projects">
+        <fa-icon [icon]="Project"></fa-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/admin/users" routerLinkActive="active" class="nav-link text-white"  title="Users">
+        <fa-icon [icon]="Users"></fa-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/admin/tools" routerLinkActive="active" class="nav-link text-white"  title="Tools">
+        <fa-icon [icon]="Tools"></fa-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/admin/privileges" routerLinkActive="active" class="nav-link text-white"  title="Privileges">
+        <fa-icon [icon]="Privileges"></fa-icon>
+      </a>
+    </li>
+    <hr />
+    <li>
+      <a routerLink="/profile" routerLinkActive="active" class="nav-link text-white"  title="Privileges">
+        <fa-icon [icon]="profile"></fa-icon>
+      </a>
+    </li>
+  </ul>
+
+</div>

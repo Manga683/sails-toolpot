@@ -1,0 +1,29 @@
+.header-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: black;
+}
+
+.header-side-nav{
+    display: flex;
+    width: 88vw;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: black;
+}
+
+@media (min-width: 320px) and (max-width: 768px){
+    .laptopView{
+        display: none;
+    }
+}
+
+@media (min-width: 768px){
+    .tabletView{
+        display: none;
+    }
+}

@@ -1,0 +1,85 @@
+<div style="display: flex;flex-direction: column;">
+
+
+  <h1 style="color: #1aa1a1;">Managing Users</h1>
+
+
+  <div style="align-self: flex-end;">
+    <div style="display: flex;flex-direction: column;">
+      <button class="btn" style="background-color: #1aa1a1;color: white;" (click)="showForm()">{{ !formShow ? 'Add User'
+        : 'Close'}}</button>
+      <div *ngIf="formShow" style="align-self: flex-end;width: 100%;min-width: 20vw;">
+        <div class="container">
+          <div class="row">
+            <form [formGroup]="addUser" (ngSubmit)="addUserDetails()"
+              class="col-12 col-md-6 col-lg-12 card shadow-lg p-3 mb-5 bg-white rounded">
+              <label>Name</label>
+              <input formControlName="Name" class="form-control" type="text" placeholder="Enter The Name" />
+              <label>Email</label>
+              <input formControlName="Email" class="form-control" type="text" placeholder="Enter The Email" />
+              <label>Password</label>
+              <input formControlName="Password" class="form-control" type="password" value="defaultPswd" />
+
+              <button [disabled]="!addUser.valid" type="submit" class="btn btn-success mt-2">{{edi ? 'UPDATE' :
+                'ADD'}}</button>
+              <p [ngClass]="msg=='success'? 'text-success':'text-danger'">{{msg}}</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="align-self: flex-start;margin-bottom: 10px;">
+    <button class="btn" style="background-color: #1aa1a1;color: white;" (click)="fetchUsers()">Fetch Users</button>
+  </div>
+
+  <div *ngIf="loading"
+    style="min-height: 70vh;min-width: 70vw;display: flex;justify-content: center;align-items: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <!-- <form [formGroup]="editForm" (ngSubmit)="editedData()"> -->
+  <table *ngIf="!errorMsg && !loading" datatable [dtOptions]="dtOptions" class="table table-hover"
+    style="min-height: 70vh;min-width: 70vw;border: 5px solid black;">
+    <thead>
+      <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of usersList">
+        <td scope="row">
+          {{usersList.indexOf(i)+1 }}
+        </td>
+        <td scope="row">
+          {{i.Name}}
+        </td>
+        <td scope="row">
+          {{i.Email}}
+        </td>
+        <td scope="row">
+          {{i.Password}}
+        </td>
+        <td scope="row">
+          <fa-icon [icon]="edit" (click)="editMode(i)"></fa-icon>
+          <span class="p-2"></span>
+          <fa-icon [icon]="delete" style="color: red;" (click)="deleteUser(i)"></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- </form> -->
+
+  <div *ngIf="errorMsg"
+    style="min-height: 80vh;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <!-- <h3 class="text-danger">{{error.status}} {{error.statusText}}</h3> -->
+    <h6>{{errorMsg}}</h6>
+    <button class="btn btn-danger" (click)="fetchUsers()">Retry</button>
+  </div>
+
+</div>

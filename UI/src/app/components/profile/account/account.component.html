@@ -1,0 +1,23 @@
+<form [formGroup]="account">
+    <div>
+        <label class="form-label">Full Name</label>
+        <p class="form-control mw">name</p>
+    </div>
+    <!-- <div>
+        <label class="form-label">Username</label>
+        <p class="form-control" style="min-width: 25vw;">username</p>
+    </div> -->
+    <div>
+        <label class="form-label">Email</label>
+        <p class="form-control mw">email</p>
+    </div>
+    <div>
+        <label class="form-label">Password</label>
+        <p class="form-control mw">{{ passwordChange }}</p>
+    </div>
+
+    <div>
+        <button class="btn mt-2" style="background-color: #1aa1a1;color: white;">Update</button>
+        <button class="btn mt-2" style="color: #1aa1a1;border:2px solid #1aa1a1;">Cancel</button>
+    </div>
+</form>

@@ -1,0 +1,19 @@
+<div style="display: flex;">
+  <app-sidenav *ngIf="nav" class="sideN"></app-sidenav>
+  <div style="display: flex;flex-direction: column;">
+      <header >
+          <app-header [nav]="nav" (click)="onc()"></app-header>
+      </header> 
+      <div style="padding: 20px;">
+          <router-outlet loading="true"></router-outlet>
+      </div>
+      <footer>
+          <app-footer></app-footer>
+      </footer>
+  </div>
+</div>
+    
+    
+    
+
+

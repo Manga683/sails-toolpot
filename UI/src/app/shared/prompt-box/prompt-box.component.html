@@ -1,0 +1,29 @@
+<div class="backdrop"  (click)="onClose()"></div>
+
+<div class="prompt-box modal-content laptopView">
+  <div class="modal-header">
+    <h5 class="modal-title">Change Your Password</h5>
+    <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="prompt-box-actions mt-2">
+    <button type="button" class="btn m-2 text-white"  style="background-color: #1aa1a1;" routerLink="/reset-password">Change Password</button>
+    <button type="button" class="btn btn-secondary m-2" data-dismiss="modal"  (click)="onClose()">Maybe Later</button>
+  </div>
+</div>
+
+
+
+<div class="prompt-box mobileView">
+  <div class="modal-header">
+    <p class="modal-title">Change Your Password</p>
+    <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="prompt-box-actions">
+    <button type="button" class="btn text-white"  style="background-color: #1aa1a1;" routerLink="/profile/change-password">Change Password</button>
+  </div>
+</div>

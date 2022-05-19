@@ -1,0 +1,51 @@
+<div style="background-color: #1aa1a15d; min-height: 100vh">
+  <app-header></app-header>
+
+  <div style="padding-top: 20vh; min-height: 75vh; margin-left: 10px">
+    <h2>Projects</h2>
+    <p>projects you are engaged in</p>
+
+    <div style="display: flex; max-width: 100vw; flex-wrap: wrap">
+      <div *ngFor="let i of userProject">
+        <div
+          routerLink="/{{ i.pId }}"
+          style="
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+            min-height: 100px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #1aa1a1;
+            border-radius: 10px;
+            box-shadow: 5px 5px #1aa1a1;
+            background-color: white;
+          "
+        >
+          <div style="display: flex; justify-content: space-between">
+            <p
+              style="
+                padding: 10px;
+                border-radius: 30px;
+                background-color: #1aa1a1;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+              "
+            >
+              {{ i.pName[0] }}
+            </p>
+            <h3>{{ i.pName }}</h3>
+          </div>
+          <p>{{ i.pDesc }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer class="fixed-bottom"></app-footer>
+</div>

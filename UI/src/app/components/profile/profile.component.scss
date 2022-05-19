@@ -1,0 +1,39 @@
+.navTrue{
+    display: flex;
+}
+.navFalse{
+    display: flex;
+    justify-content: center;
+}
+.active{
+    background-color: #1aa1a1;
+    color: white;
+}
+.r-active{
+    background-color: red;
+    color: white;
+}
+
+@media (max-width: 768px){
+    .laptopView{
+        display: none;
+    }
+    .tabletView{
+        width: 280px;
+    }
+}
+
+@media (min-width: 768px){
+    .laptopView{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 18vh;
+        // min-height: 60vh;
+    }
+
+    .tabletView{
+        display: none;
+    }
+}

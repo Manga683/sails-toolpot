@@ -1,0 +1,87 @@
+<div style="display: flex;" >
+  <app-sidenav class="nav fixed-left" *ngIf="nav"></app-sidenav>
+  <div style="min-width: 100vw;">
+    <app-header [nav]="nav"></app-header>
+
+    <div class="laptopView" >
+      <div class="card border shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 70vw;margin-top: 15px;">
+          <h5 class="card-header text-white" style="background-color: #1aa1a1;">Profile</h5>
+          <div class="card-body" style="display: flex;justify-content: space-around;">
+            <ul style="list-style-type: none;">
+              <li class="text-center">
+                  <img src="../../../assets/images/profile.png" alt="profile" style="height: 100px;width: 100px;align-self: center;" />
+              </li>
+              <li class="text-center">User Name</li>
+              <li style="border: 1px solid gray;padding: 5px;border-radius: 5px;margin-right: 5px;font-size: 17px;width: 15vw;" routerLink="/profile/account" routerLinkActive="active" >Account</li>
+              <li style="border: 1px solid gray;padding: 5px;border-radius: 5px;margin-right: 5px;font-size: 17px;width: 15vw;" routerLink="/profile/change-password" routerLinkActive="active" >Change-password</li>
+              <li><button class="btn btn-danger" style="font-size: 17px;width: 15vw;" (click)="logout()">Logout</button></li>
+            </ul>
+  
+            <div class="pl-2 pt-5" style="margin-left: 5vw;">
+              <router-outlet></router-outlet>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+  <div class="tabletView" style="margin-left: 10vh;margin-top: 20vh; margin-bottom: 10vh">
+    <div class="card border border-primary" style="min-width: 50vw;">
+        <h5 class="card-header text-white" style="background-color: #1aa1a1;">Profile</h5>
+        <div class="card-body" style="display: flex;flex-direction: column;align-items: center;">
+          <ul style="list-style-type: none;">
+            <li class="text-center">
+                <img src="../../../assets/images/profile.png" alt="profile" style="height: 100px;width: 100px;align-self: center;" />
+            </li>
+            <li class="text-center">User Name</li>
+
+            <!-- <div style="display: flex;flex-direction: column;justify-content: center;align-items:center;border: 1px solid gray;border-radius: 5px;"> -->
+              <li style="border: 1px solid gray;padding: 5px;border-radius: 5px;margin-right: 5px;font-size: 17px;width: 40vw;" routerLink="/profile/account" routerLinkActive="active" (click)="openAccount()" >
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                  Account
+                  <fa-icon *ngIf="!showAcc" [icon] = "right"></fa-icon>
+                  <fa-icon *ngIf="showAcc" [icon] = "down"></fa-icon>
+                </div>
+              </li>
+              <div style="margin-top: 10px;padding: 5px;">
+                <app-account *ngIf="showAcc"></app-account>
+              </div>
+              
+            <!-- </div> -->
+            
+            <li style="border: 1px solid gray;padding: 5px;border-radius: 5px;margin-right: 5px;font-size: 17px;width: 40vw;" routerLink="/profile/change-password" routerLinkActive="active" (click)="openPswd()" >
+              <div style="display: flex;justify-content: space-between;align-items: center;">
+                Change-password
+                <fa-icon *ngIf="!showCP" [icon] = "right"></fa-icon>
+                <fa-icon *ngIf="showCP" [icon] = "down"></fa-icon>
+              </div>
+            </li>
+            <div style="margin-top: 10px;padding: 5px;">
+              <app-change-password *ngIf="showCP"></app-change-password>
+            </div>
+
+            <li><button class="btn btn-danger" style="font-size: 17px;width: 40vw;" (click)="logout()">Logout</button></li>
+          </ul>
+
+          <!-- <div class="pl-2 pt-5" style="margin-left: 5vw;">
+            <router-outlet></router-outlet>
+          </div> -->
+
+        </div>
+    </div>
+  </div>
+
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+
+  </div>
+
+
+    
+</div>
+    
+    
+    
+
+

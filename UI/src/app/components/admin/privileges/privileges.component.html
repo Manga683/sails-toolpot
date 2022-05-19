@@ -1,0 +1,111 @@
+<div style="display: flex; flex-direction: column">
+  <h1 style="color: #1aa1a1">Managing Privileges</h1>
+
+  <div style="align-self: flex-end; margin-bottom: 10px">
+    <button
+      (click)="btnAddUser()"
+      class="btn"
+      style="background-color: #1aa1a1; color: white"
+    >
+      {{ showInputField ? "Close" : "Add User" }}
+    </button>
+
+    <form
+      (ngSubmit)="onSubmit(f)"
+      #f="ngForm"
+      *ngIf="showInputField"
+      class="d-flex"
+    >
+      <input
+        name="username"
+        ngModel
+        class="form-control"
+        placeholder="Enter Email"
+      />
+      <button type="submit" class="btn btn-success">Add</button>
+    </form>
+  </div>
+
+  <div style="align-self: flex-start; margin-bottom: 10px">
+    <button
+      class="btn"
+      style="background-color: #1aa1a1; color: white"
+      (click)="getData()"
+    >
+      Fetch Data
+    </button>
+  </div>
+
+  <div
+    *ngIf="loading"
+    style="
+      min-height: 70vh;
+      min-width: 70vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div
+    *ngIf="showE && !loading"
+    style="
+      min-height: 70vh;
+      min-width: 70vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <h2>{{ e.status }}</h2>
+    <h5>{{ e.statusText }}</h5>
+    <button class="btn btn-danger" (click)="getData()">Retry</button>
+  </div>
+
+  <table
+    *ngIf="!loading && !showE"
+    datatable
+    [dtOptions]="dtOptions"
+    class="table table-hover"
+    style="
+      min-height: 70vh;
+      min-width: 50vw;
+      max-width: 70vw;
+      border: 5px solid black;
+    "
+  >
+    <thead>
+      <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">Project Name</th>
+        <th scope="col">Team Members(Max 5)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of privData">
+        <th scope="row">{{ i.sNo }}</th>
+        <td>{{ i.pName }}</td>
+        <td>
+          <ul style="list-style-type: none" *ngFor="let j of i.pTeam">
+            <li>
+              {{ j }}
+              <fa-icon
+                style="margin-left: 10px; color: red"
+                [icon]="remove"
+                (click)="removeUser(i.id, j, privData.indexOf(i))"
+              ></fa-icon>
+            </li>
+          </ul>
+          <fa-icon
+            [icon]="add"
+            *ngIf="i.pTeam == null || i.pTeam.length < 5"
+            (click)="addUserToProject(i.id, privData.indexOf(i))"
+          ></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

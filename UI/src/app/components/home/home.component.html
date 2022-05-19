@@ -1,0 +1,41 @@
+
+
+<div style="display: flex;" >
+
+  <app-sidenav *ngIf="nav" class="sideN" ></app-sidenav>
+
+  <div>
+      <app-header [nav]="nav" ></app-header>
+      <div  style="display: flex;flex-direction: column;min-height: 85vh;min-width: 85vw;background-color: #1aa1a1;">
+        
+        <!-- <canvas id="myChart" width="50%" height="60%" ></canvas> -->
+        <div style="display: flex;flex-wrap: wrap;">
+          <div style="background-color: white;border-radius: 20px;padding: 10px;margin: 10px;">
+            <h1>{{noOfProjects}}</h1>
+            <hr style="border: 2px solid rgb(245, 6, 42);opacity: 1;" />
+            <h6>NO OF PROJECTS CURRENTLY ACTIVE</h6>
+          </div>
+          <div style="background-color: white;border-radius: 20px;padding: 10px;margin: 10px;">
+            <h1>{{noOfUsers}}</h1>
+            <hr style="border: 2px solid green;opacity: 1;" />
+            <h6>NO OF EMPLOYEES WORKING IN PROJECTS</h6>
+          </div>
+          <div style="background-color: white;border-radius: 20px;padding: 10px;margin: 10px;">
+            <h1>{{noOfTools}}</h1>
+            <hr style="border: 2px solid rgb(138, 4, 138);opacity: 1;" />
+            <h6>NO OF TOOLS USED IN PROJECTS</h6>
+          </div>
+        </div>
+
+        <app-prompt-box
+          *ngIf="prompt"
+          (close)="onHandleError()"
+          ></app-prompt-box>
+        <app-user *ngIf="!admin" style="display: flex;"></app-user>
+      </div>
+      <footer>
+        <app-footer></app-footer>
+      </footer>
+  </div>
+
+</div>

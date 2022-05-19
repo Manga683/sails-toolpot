@@ -1,0 +1,52 @@
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    background-color: #1aa1a15d;
+    min-height: 100vh;
+  "
+>
+  <app-header></app-header>
+
+  <div
+    style="
+      width: 34vw;
+      border-radius: 20px;
+      margin-top: 25vh;
+      margin-left: 10px;
+      background-color: white;
+    "
+    (click)="openProjects()"
+  >
+    <div
+      style="
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <img
+        src="../../../assets/images/user-projects.png"
+        style="width: 30vw"
+        alt="project-dp"
+      />
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <h3>Projects</h3>
+        <p>projects you are currently working in</p>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <app-footer class="fixed-bottom"></app-footer>
+</div>

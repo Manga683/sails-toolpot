@@ -1,0 +1,20 @@
+.active{
+    color: #1aa1a1;
+}
+
+@media (max-width: 768px){
+    .laptopView{
+        display: none;
+    }
+    .tabletView{
+        display: flex;
+        flex-direction: column;
+        width: 4.5rem;
+    }
+}
+
+@media (min-width: 768px){
+    .tabletView{
+        display: none;
+    }
+}

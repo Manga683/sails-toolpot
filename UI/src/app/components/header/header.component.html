@@ -1,0 +1,22 @@
+<nav *ngIf="admin" [ngClass]="nav ? 'header-side-nav':'header-nav'" class="navbar" >
+    <fa-icon [icon]="bar" class="fa-2x" style="color: #1AA1A1;" (click)="showSideNav()"></fa-icon>
+    <img src="../../../assets/images/logo.png" routerLink="/" style="height: 100px;width: 170px;" />
+    <fa-icon [icon]="f" routerLink="/profile" class="fa-3x laptopView" style="color: white;"></fa-icon>
+</nav>
+
+<nav *ngIf="!admin" class="navbar fixed-top header-nav text-white" >
+    <img src="../../../assets/images/logo.png" routerLink="/user" style="height: 100px;width: 170px;" />
+    <div style="display: flex;justify-content: space-between;align-items: center;min-width:30vw;max-width: 50vw;">
+        <h5 class="laptopView" routerLink="/user">Home</h5>
+        <h5 class="laptopView" routerLink="/projectList">Projects</h5>
+        <fa-icon class="fa-3x laptopView" [icon]="f" routerLink="/profile" style="color: white;"></fa-icon>
+        <fa-icon class="tabletView fa-2x" [icon]="home" routerLink="/user" style="color: #1AA1A1;" title="home"></fa-icon>
+        <fa-icon class="tabletView fa-2x" [icon]="project" routerLink="/projectList" style="color: #1AA1A1;" title="project"></fa-icon>
+        <fa-icon class="tabletView fa-2x" [icon]="f" routerLink="/profile" style="color: #1AA1A1;" title="profile"></fa-icon>
+    </div>
+</nav>
+    
+
+
+    
+    

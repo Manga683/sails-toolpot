@@ -1,0 +1,167 @@
+<div style="display: flex;flex-direction: column;">
+
+
+    <h1 style="color: #1aa1a1;">Managing Projects</h1>
+
+
+    <div style="align-self: flex-end;">
+        <div style="display: flex;flex-direction: column;">
+            <button class="btn" style="background-color: #1aa1a1;color: white;" (click)="showForm()">{{ !formShow ? 'Add
+                Project'
+                : 'Close'}}</button>
+            <div *ngIf="formShow" style="align-self: flex-end;width: 100%;min-width: 20vw;">
+                <div class="container">
+                    <div class="row">
+                        <form [formGroup]="addProject" (ngSubmit)="addProjectDetails()"
+                            class="col-12 col-md-6 col-lg-12 card shadow-lg p-3 mb-5 bg-white rounded">
+                            <label>Project Name</label>
+                            <input formControlName="ProjectName" class="form-control" type="text"
+                                placeholder="Enter The project Name" />
+
+                            <div *ngIf="addProject.get('ProjectName')?.errors  && submitted">
+                                <div *ngIf="addProject.get('ProjectName')?.hasError('required')">
+                                    <span style="color: red;">Please Enter Project Name.</span>
+                                </div>
+                                <div *ngIf="addProject.get('ProjectName')?.hasError('minlength')">
+                                    <span style="color: red;">Project Name requied atleast 3
+                                        characters.</span>
+                                </div>
+                                <div *ngIf="addProject.get('ProjectName')?.hasError('maxlength')">
+                                    <span style="color: red;">Project Name requied only 30 characters.</span>
+                                </div>
+                                <div *ngIf="addProject.get('ProjectName')?.hasError('pattern')">
+                                    <span style="color: red;">Only characters are allowed.</span>
+                                </div>
+                            </div>
+                            <label>Team Email</label>
+                            <input formControlName="PEmail" class="form-control" type="text"
+                                placeholder="Enter The Email" />
+                            <div *ngIf="addProject.get('PEmail')?.errors && submitted">
+                                <div *ngIf="addProject.get('PEmail')?.hasError('required')">
+                                    <span style="color: red;">Please Enter Email.</span>
+                                </div>
+                                <div *ngIf="addProject.get('PEmail')?.hasError('pattern')">
+                                    <span style="color: red;">The Email is not valid.</span>
+                                </div>
+
+
+                            </div>
+
+                            <label>description</label>
+                            <input formControlName="description" class="form-control" type="text" />
+                            <div *ngIf="addProject.get('description')?.errors  && submitted">
+                                <div *ngIf="addProject.get('description')?.hasError('required')">
+                                    <span style="color: red;">Please Enter description.</span>
+                                </div>
+                                <div *ngIf="addProject.get('description')?.hasError('minlength')">
+                                    <span style="color: red;">description requied atleast 3
+                                        characters.</span>
+                                </div>
+                                <div *ngIf="addProject.get('description')?.hasError('maxlength')">
+                                    <span style="color: red;">description requied only 30 characters.</span>
+                                </div>
+                                <div *ngIf="addProject.get('description')?.hasError('pattern')">
+                                    <span style="color: red;">Only characters are allowed.</span>
+                                </div>
+                            </div>
+                            <label>P tools</label>
+                            <input formControlName="Ptools" class="form-control" type="text" />
+                            <div *ngIf="addProject.get('Ptools')?.errors  && submitted">
+                                <div *ngIf="addProject.get('Ptools')?.hasError('required')">
+                                    <span style="color: red;">Please Enter Project tools.</span>
+                                </div>
+                                <div *ngIf="addProject.get('Ptools')?.hasError('minlength')">
+                                    <span style="color: red;">Project tools requied atleast 3
+                                        characters.</span>
+                                </div>
+                                <div *ngIf="addProject.get('Ptools')?.hasError('maxlength')">
+                                    <span style="color: red;">Project tools requied only 30 characters.</span>
+                                </div>
+                                <div *ngIf="addProject.get('Ptools')?.hasError('pattern')">
+                                    <span style="color: red;">Only characters are allowed.</span>
+                                </div>
+                            </div>
+                            <label>status</label>
+                            <input formControlName="status" class="form-control" type="text" />
+                            <div *ngIf="addProject.get('status')?.errors  && submitted">
+                                <div *ngIf="addProject.get('status')?.hasError('required')">
+                                    <span style="color: red;">Please Enter status.</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success mt-2">{{edi ?
+                                'UPDATE' :
+                                'ADD'}}</button>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="align-self: flex-start;margin-bottom: 10px;">
+        <button class="btn" style="background-color: #1aa1a1;color: white;" (click)="fetchProjects()">Fetch
+            Projects</button>
+    </div>
+
+    <div *ngIf="loading"
+        style="min-height: 70vh;min-width: 70vw;display: flex;justify-content: center;align-items: center;">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+
+    <!-- <form [formGroup]="editForm" (ngSubmit)="editedData()"> -->
+    <table *ngIf="!errorMsg && !loading" datatable [dtOptions]="dtOptions" class="table table-hover"
+        style="min-height: 70vh;min-width: 70vw;border: 5px solid black;">
+        <thead>
+            <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">ProjectName</th>
+                <th scope="col">team lead Email</th>
+                <th scope="col">description</th>
+                <th scope="col">Project tools</th>
+                <th scope="col">status</th>
+
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of projectList">
+                <td scope="row">
+                    {{projectList.indexOf(i)+1 }}
+                </td>
+                <td scope="row">
+                    {{i.ProjectName}}
+                </td>
+                <td scope="row">
+                    {{i.PEmail}}
+                </td>
+                <td scope="row">
+                    {{i.description}}
+                </td>
+                <td scope="row">
+                    {{i.Ptools}}
+                </td>
+                <td scope="row">
+                    {{i.status}}
+                </td>
+                <td scope="row">
+                    <fa-icon [icon]="edit" (click)="editMode(i)"></fa-icon>
+                    <span class="p-2"></span>
+                    <fa-icon [icon]="delete" style="color: red;" (click)="deleteProject(i)"></fa-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- </form> -->
+
+    <div *ngIf="errorMsg"
+        style="min-height: 80vh;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+        <!-- <h3 class="text-danger">{{error.status}} {{error.statusText}}</h3> -->
+        <h6>{{errorMsg}}</h6>
+        <button class="btn btn-danger" (click)="fetchProjects()">Retry</button>
+    </div>
+
+</div>
